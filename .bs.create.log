@@ -1,0 +1,52 @@
+# 2019.06.01 : 백 엔드 API 서버 환경 구축 : [ 
+  (build), 
+  (build)/dev-server.js 
+]
+# 2019.06.01 : Vuex 상태관리 라이브러리 도입 : [ 
+  (src)/(store), 
+  (src)/(store)/[ 
+    index.ts, state.ts, actions.ts, getters.ts, mutaition-types.ts, mutations.ts 
+  ] 
+]
+# 2019.06.02 : API 모듈(백 엔드와 HTTP 통신 - axios) : [ 
+  (src)/(api), 
+  (src)/(api)/[ index.ts, auth.ts, client.ts, list.ts, task.ts ] 
+]
+# 2019.06.02 : ATOMIC 디자인에 따른 컴포넌트 설계 : [ 
+  (src)/(components)/[
+    (atoms), (molecules), (organisms), (templates)
+  ],
+  (src)/(components)/(atoms)/[ KbnButtons.vue, KbnIcon.vue ],
+  (src)/(components)/(molecules)/[
+    KbnBoardNavigation.vue, KbnLoginForm.vue, KbnTaskCard.vue, KbnTaskDetailForm.vue, KbnTaskForm.vue, KbnTaskListHeader.vue
+  ],
+  (src)/(components)/(organisms)/[ KbnBoardTask.vue, KbnTaskList.vue ],
+  (src)/(components)/(templates)/[
+    KbnBoardView.vue, KbnLoginView.vue, KbnTaskDetailModal.vue
+  ]
+]
+# 2019.06.06 : 컴포넌트 단위테스 작성 : [
+  (tests)/(unit)/(components),
+  (tests)/(unit)/(components)/[ (atoms), (molecules), (templates) ],
+  (tests)/(unit)/(components)/(atoms)/[ KbnButton.spec.ts ],
+  (tests)/(unit)/(components)/(molecules)/[ KbnLoginForm.spec.ts ],
+  (tests)/(unit)/(components)/(templates)/[ KbnLoginView.spec.ts ],
+]
+# 2019.06.08 : login 액션/뮤테이션 핸들러, Auth API 단위테스트 : [
+  (tests)/(unit)/[ (api), (store) ],
+  (tests)/(unit)/(api)/[ auth.spec.ts ],
+  (tests)/(unit)/(store)/[ (actions), (mutaitions) ],
+  (tests)/(unit)/(store)/(actions)/[ login.spec.ts ],
+  (tests)/(unit)/(store)/(mutaitions)/[ auth_login.spec.ts ],
+]
+# 2019.06.09 : decorators 추가(테스트용) : [
+  (src)/(decorators),
+  (src)/(decorators)/ [ index.ts, Getter.ts ]
+]
+# 2019.06.09 : 라우팅 단위테스트 : [
+  (tests)/(unit)/(specs)/(router)
+  (tests)/(unit)/(specs)/(router)/[ guards.spec.ts ]
+]
+# 2019.06.09 : errorCaptured 훅. 오류 처리 컴포넌트. : [
+  (src)/[ ErrorBoundary.vue ]
+]
