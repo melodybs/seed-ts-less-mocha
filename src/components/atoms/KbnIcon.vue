@@ -21,7 +21,7 @@ export default class KbnIcon extends Vue {
   public get classes (): string[] {
     return [ 'kbn-icon', this.name ]
   }
-  public get icon (): string {
+  public get icon (): string | void {
     const name: string = this.name
     if (name === 'close' || name === 'remove') {
       return 'x'

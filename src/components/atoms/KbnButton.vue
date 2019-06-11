@@ -18,7 +18,7 @@ export default class KbnButton extends Vue {
   @Prop({ default: false }) public disabled!: boolean
 
   public get classes (): string[] {
-    const cls = this.type === 'text' ? ('-' + this.type) : ''
+    const cls = this.type === 'text' ? '-' + this.type : ''
     return [`kbn-button${cls}`]
   }
   @Emit('click')
@@ -63,7 +63,7 @@ export default {
 
 <style lang="less" scoped>
 .kbn-button {
-  padding: .6em 1.3em;
+  padding: 0.6em 1.3em;
 }
 .kbn-button-text {
   border: none;
