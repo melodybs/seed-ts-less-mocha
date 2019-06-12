@@ -1,4 +1,4 @@
-import { MutationTree } from 'vuex'
+import { MutationTree, MutationPayload } from 'vuex'
 import State from './state'
 import * as types from './mutation-types'
 
@@ -15,9 +15,15 @@ const mutations: MutationTree<State> = {
     // TODO:
     throw new Error('FETCH_ALL_TASKLIST mutaition should be implemented')
   },
-  [types.ADD_TASK] (state: State, payload: any): void {
-    // TODO:
-    throw new Error('ADD_TASK mutaition should be implemented')
+  [types.ADD_TASK] (state: any, payload: any): void {
+    const task = payload
+    for (let i = 0; i < state.board.lists.length; i++) {
+      const list = state.board.lists[i]
+      if (list.id === task.listId) {
+        list.items.push(task)
+        break
+      }
+    }
   },
   [types.UPDATE_TASK] (state: State, payload: any): void {
     // TODO:

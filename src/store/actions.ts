@@ -1,7 +1,7 @@
 import * as types from './mutation-types'
-import { Auth } from '../api'
+import { Auth, Task } from '../api'
 import State from './state'
-import { ActionContext, ActionTree } from 'vuex'
+import { ActionContext, ActionTree, ActionPayload, Payload, MutationPayload } from 'vuex'
 
 // ActionTree<[current state], [root state]>
 const actions: ActionTree<State, State> = {
@@ -20,17 +20,19 @@ const actions: ActionTree<State, State> = {
     // TODO:
     throw new Error('fetchLists action should be implemented')
   },
-  addTask: ({ commit }: ActionContext<State, State>): void => {
-    // TODO:
-    throw new Error('addTask action should be implemented')
+  addTask: ({ commit, state }: ActionContext<any, State>, { listId, name }: any): Promise<void> => {
+    return Task.add(state.auth.token, { listId, name })
+      .then((task: any): void => {
+        commit(types.ADD_TASK, task)
+      })
+      .catch((err: Error): void => { throw err })
   },
   updateTask: ({ commit }: ActionContext<State, State>): void => {
     // TODO:
     throw new Error('updateTask action should be implemented')
   },
-  removeTask: ({ commit }: ActionContext<State, State>): void => {
-    // TODO:
-    throw new Error('removeTask action should be implemented')
+  removeTask: ({ commit, state }: ActionContext<State, State>, { id, listId }: any): void => {
+    // 
   }
 }
 

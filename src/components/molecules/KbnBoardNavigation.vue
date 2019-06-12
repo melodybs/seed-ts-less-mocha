@@ -16,10 +16,28 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
+import Component from 'vue-class-component'
+import KbnButton from '@/components/atoms/KbnButton.vue'
 
+@Component({
+  name: 'KbnBoardNavigation',
+  components: { KbnButton }
 })
+export default class KbnBoardNavigation extends Vue {}
 </script>
+<!--
+<script>
+import KbnButton from '@/components/atoms/KbnButton.vue'
+
+export default {
+  name: 'KbnBoardNavigation',
+
+  components: {
+    KbnButton
+  }
+}
+</script>
+-->
 
 <style lang="less">
 .board-navigation {
