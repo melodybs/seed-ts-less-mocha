@@ -1,5 +1,5 @@
 import client from './client'
-import { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios'
 
 const Task = {
   add: (token: string | null, { name, listId }: {name: string, listId: number}): Promise<{}> => {
@@ -19,7 +19,7 @@ const Task = {
           reject(new Error(err.response.data.message || err.message))
         })
     })
-  })
+  }
 }
 
 export default Task

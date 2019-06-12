@@ -50,9 +50,9 @@ import { mapState } from 'vuex'
   },
   computed: {
     ...mapState({
-      canMove: (state: any): boolean => state.draggable.target !== null &&
-        state.draggable.from !== null &&
-        state.draggable.to !== null
+      canMove: (state: any): boolean => state.dragging.target !== null &&
+        state.dragging.from !== null &&
+        state.dragging.to !== null
     })
   }
 })
@@ -60,6 +60,8 @@ export default class KbnTaskList extends Vue {
   @Prop({ required: true }) public id!: number
   @Prop({ required: true }) public name!: string
   @Prop({ default: () => [] }) public items!: []
+
+  private canMove!: boolean
 
   public shown: boolean = false
 
@@ -73,6 +75,25 @@ export default class KbnTaskList extends Vue {
   handleRemove ({ id, listId }: any): any {
     return this.$store.dispatch('removeTask', { id, listId })
       .catch((err: Error): Promise<void> => Promise.reject(err))
+  }
+  handleChange ({ added, removed }: any): any {
+    if (added) {
+      return this.$store.dispatch('moveToTask', {
+        id: added.element.id,
+        listId: this.id
+      }).catch((err: Error): Promise<void> => Promise.reject(err))
+    } else if (removed) {
+      return this.$store.dispatch('moveTaskFrom', {
+        id: removed.element.id,
+        listId: this.id
+      }).catch((err: Error): Promise<void> => Promise.reject(err))
+    }
+  }
+  handleEnd () {
+    if (this.canMove) {
+      return this.$store.dispatch('performTaskMoving')
+        .catch((err: Error): Promise<void> => Promise.reject(err))
+    }
   }
 }
 </script>

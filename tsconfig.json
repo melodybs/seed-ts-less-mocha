@@ -15,9 +15,12 @@
       "webpack-env",
       "mocha",
       "chai",
-      "node"
+      "node",
+      "vuetify",
+      "vuedraggable"
     ],
     "typeRoots": [
+      "@types",
       "node_modules/@types"
     ],
     "paths": {
