@@ -11,6 +11,15 @@ const Auth = {
           reject(new Error(err.response.data.message || err.message))
         })
     })
+  },
+  logout: (token: string): Promise<void> => {
+    return new Promise((resolve, reject): void => {
+      client.delete('/auth/logout', { headers: { 'x-kbn-token': token } })
+        .then((): void => resolve())
+        .catch((err: any): void => {
+          reject(new Error(err.response.data.message || err.message))
+        })
+    })
   }
 }
 

@@ -2,7 +2,7 @@ import client from './client'
 import { AxiosResponse } from 'axios'
 
 const Task = {
-  add: (token: string | null, { name, listId }: {name: string, listId: number}): Promise<{}> => {
+  add: (token: string, { name, listId }: {name: string, listId: number}): Promise<void> => {
     return new Promise((resolve, reject): void => {
       client.post(`/tasks/add`, { name, listId }, { headers: { 'x-kbn-token': token } })
         .then((res: AxiosResponse): void => resolve(res.data))
@@ -11,17 +11,24 @@ const Task = {
         })
     })
   },
-  remove: (token: string | null, { id, listId }: any): any => {
-    return new Promise((resolve, reject): any => {
+  remove: (token: string, { id, listId }: { id: number, listId: number }): Promise<void> => {
+    return new Promise((resolve, reject): void => {
       client.delete(`/tasks/${id}/remove`, { headers: { 'x-kbn-token': token } })
-        .then((): any => resolve())
-        .catch((err: any): any => {
+        .then((): void => resolve())
+        .catch((err: any): void => {
+          reject(new Error(err.response.data.message || err.message))
+        })
+    })
+  },
+  move: (token: string, { id, from, to }: { id: number, from: number, to: number }): Promise<void> => {
+    return new Promise((resolve, reject): void => {
+      client.post(`tasks/${id}/move`, { from, to }, { headers: { 'x-kbn-token': token } })
+        .then((): void => resolve())
+        .catch((err: any): void => {
           reject(new Error(err.response.data.message || err.message))
         })
     })
   }
-},
-/* move: (token: string, { id, from, to }: any): any => {
-} */
+}
 
 export default Task

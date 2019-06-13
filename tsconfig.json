@@ -42,7 +42,9 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "src/**/*.js",
-    "tests/**/*.js"
+    "tests/**/*.js",
+    "stories/**/*.ts",
+    "stories/**/*.js"
   ],
   "exclude": [
     "node_modules"

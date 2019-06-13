@@ -9,6 +9,7 @@ module.exports = ({ config }) => {
   config.module.rules.push({
     resolve: {
       alias: {
+        // ...config.resolve.alias,
         'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src')
       },

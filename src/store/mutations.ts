@@ -10,9 +10,8 @@ const mutations: MutationTree<any> = {
     // TODO:
     throw new Error('AUTH_LOGOUT mutaition should be implemented')
   },
-  [types.FETCH_ALL_TASKLIST] (state: any, payload: any): void {
-    // TODO:
-    throw new Error('FETCH_ALL_TASKLIST mutaition should be implemented')
+  [types.FETCH_ALL_TASKLIST] (state: any, payload: { [index: string]: [] }): void {
+    state.board.lists = payload
   },
   [types.ADD_TASK] (state: any, payload: any): void {
     const task = payload
@@ -47,7 +46,7 @@ const mutations: MutationTree<any> = {
     const getTaskList = (lists: any, id: any): any => {
       return lists.find((list: any): any => list.id === id)
     }
-    
+
     // 드래그앤드롭 처리에 사용되는 상태 초기화
     state.dragging.target = null
     state.dragging.from = null

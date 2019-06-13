@@ -18,17 +18,57 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import KbnBoardNavigation from '@/components/molecules/KbnBoardNavigation.vue'
 import KbnBoardTask from '@/components/molecules/KbnBoardTask.vue'
+import { mapState } from 'vuex'
 
 @Component({
   name: 'KbnBoardView',
   components: {
     KbnBoardNavigation,
     KbnBoardTask
+  },
+  computed: {
+    ...mapState({
+      lists: (state: any) => state.board.lists
+    })
   }
 })
 export default class KbnBoardView extends Vue {
   public progress: boolean
   public message: string = ''
+
+  created () {
+    this.loadLists()
+  }
+
+  private setProgress (message: string): void {
+    this.progress = true
+    this.message = message
+  }
+  private resetProgress (): void {
+    this.progress = false
+    this.message = ''
+  }
+  public loadLists (): void {
+    this.setProgress('로딩 중...')
+
+    this.$store.dispatch('fetchLists')
+      .catch((err: Error): Promise<never> => Promise.reject(err))
+      .then(():void => {
+        this.resetProgress()
+      })
+  }
+  public handleLogout (): Promise<void> {
+    this.setProgress('로그아웃 중...')
+
+    return this.$store.dispatch('logout')
+      .then((): void => {
+        this.$router.push({ path: '/login' })
+      })
+      .catch((err: Error): Promise<never> => Promise.reject(err))
+      .then((): void => {
+        this.resetProgress()
+      })
+  }
 }
 </script>
 
