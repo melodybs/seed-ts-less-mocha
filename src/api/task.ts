@@ -20,6 +20,8 @@ const Task = {
         })
     })
   }
-}
+},
+/* move: (token: string, { id, from, to }: any): any => {
+} */
 
 export default Task

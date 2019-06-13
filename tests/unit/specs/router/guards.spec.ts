@@ -38,15 +38,15 @@ const Login = {
 }
 
 // 네비게이션 가드 구현 파일 안에서 사용할 Vuex 스토어 목업을 만드는 헬퍼 함수
-const mockAuthorizeToken = (store: Store<State>): NavigationGuard<Vue> => {
+const mockAuthorizeToken = (store: Store<any>): NavigationGuard<Vue> => {
   const injector = require('inject-loader!@/router/guards')
   const storeMock = injector({ '../store': store })
   return storeMock.authorizeToken
 }
 
-const setup = (state: State): any => {
+const setup = (state: any): any => {
   // Vuex 스토어 생성
-  const store: Store<State> = new Vuex.Store({ state })
+  const store: Store<any> = new Vuex.Store({ state })
 
   // Vue Router 생성
   const router: VueRouter = new VueRouter({

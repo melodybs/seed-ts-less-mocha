@@ -14,6 +14,25 @@ module.exports = ({ config }) => {
       },
     }
   })
+  
+  /* // '@storybook/addon-storysource
+  config.module.rules.push({
+    test: /\.stories\.jsx?$/,
+    loaders: [require.resolve('@storybook/addon-storysource/loader')],
+    options: { 
+      parser: 'typescript',
+      prettierConfig: {
+        printWidth: 100,
+        tabWidth: 2,
+        bracketSpacing: true,
+        trailingComma: 'es5',
+        singleQuote: true,
+      },                            888 = *
+      uglyCommentsRegex: [/^eslint-.888/, /^global.888/],
+      options: { injectDecorator: true }
+    },
+    enforce: 'pre'
+  }) */
 
   config.resolve.extensions.push('.ts', '.tsx', '.vue', '.css', '.less', '.scss', '.sass', '.html')
 
