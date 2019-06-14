@@ -13,7 +13,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
-import KbnTaskList from '@/components/molecules/KbnTaskList.vue'
+import KbnTaskList from '@/components/organisms/KbnTaskList.vue'
 
 @Component({
   name: 'KbnBoardTask',

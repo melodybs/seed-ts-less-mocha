@@ -15,6 +15,43 @@ module.exports = app => {
     }
   }
 
+  // 태스크 목록 ID
+  let nextTaskListId = 1
+  // 태스크 ID
+  let nextTaskId = 1
+
+  // 태스크 목록 ID를 생성하는 헬퍼 함수
+  const generateTaskListId = () => nextTaskListId++
+
+  // 태스크 ID를 생성하는 헬퍼 함수
+  const generateTaskId = () => nextTaskId++
+
+  // 태스크를 생성하는 헬퍼 함수
+  const createTask = listId => ({
+    id: generateTaskId(),
+    name: `태스크 ${nextTaskId - 1}`,
+    description: `이것은 태스크 ${nextTaskId - 1}입니다.`,
+    listId
+  })
+
+  // 태스크 콕록을 생성하는 헬퍼 함수
+  const createTaskList = (name, num) => {
+    const id = generateTaskListId()
+    const list = { id, name, items: [] }
+    for (let i = 0; i < num; i++) {
+      list.items.push(createTask(id))
+    }
+    return list
+  }
+
+  const board = {
+    lists: [
+      createTaskList('TODO', 2),
+      createTaskList('WIP', 1),
+      createTaskList('DONE', 1)
+    ]
+  }
+
   // 로그인 API 엔드포인트 '/auth/login'
   app.post('/auth/login', (req, res) => {
     const { email, password } = req.body
@@ -29,4 +66,96 @@ module.exports = app => {
       res.status(404).json({ message: '등록된 사용자가 아닙니다' })
     }
   })
+
+  // 보드 태스크 목록 API 엔드포인트 '/lists'
+  app.get('/lists', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      return releaseEvents.status(403).json({ message: '허가되지 않았습니다' })
+    }
+    res.json({ lists: board.lists })
+  })
+
+  // 태스크를 추가하는 헬퍼 함수
+  function addTask (board, name, listId) {
+    let task = null
+    for (let i = 0; i < board.lists.length; i++) {
+      if (list.id === listId) {
+        task = {
+          id: generateTaskId(),
+          name,
+          description: '',
+          listId
+        }
+        list.items.push(task)
+        break
+      }
+    }
+    return task
+  }
+
+  // 태스크 추가 API 엔드포인트 '/tasks/add'
+  app.post('/task/add', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      return res.status(403).json({ message: '허가되지 않았습니다' })
+    }
+    const { name } = req.body
+    const listId = parseInt(req.body.listId)
+    const task = addTask(board, name, listId)
+    if (task) {
+      res.status(201).json(task)
+    } else {
+      res.status(500).json({
+        message: '알 수 없는 원인으로 태스크 추가에 실패했습니다'
+      })
+    }
+  })
+
+  // 태스크를 수정하는 헬퍼 함수
+  function updateTask (board, id, name, description, listId) {
+    let ret = false
+    for (let i = 0; i < board.lists.length; i++) {
+      const list = board.lists[i]
+      if (list.id !== listId) { continue }
+      for (let j = 0; j < list.items.length; j++) {
+        const item = list.items[j]
+        if (item.id === id) {
+          item.name = name
+          item.description = description
+          ret = true
+          break
+        }
+      }
+    }
+    return ret
+  }
+
+  // 태스크 수정 API 엔드포인트 '/task/:id/update
+  app.put('/tasks/:id/update', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      return res.status(403).json({
+        message: '허가되지 않았습니다'
+      })
+    }
+    const { name, description } = req.body
+    const id = parseInt(req.params.id)
+    const listId = parseInt(req.body.listId)
+    const ret = updateTask(board, id, name, description, listId)
+    if (ret) {
+      res.sendStatus(200)
+    } else {
+      res.status(500).json({
+        message: '알 수 없는 원인으로 태스크 수정에 실패했습니다'
+      })
+    }
+  })
+
+  // 태스크 삭제 헬퍼 함수
+  function removeTask (board, id) {
+    board.lists.forEach(list => {
+      list.items = list.item.filter(item => item.id !== id)
+    })
+  }
 }

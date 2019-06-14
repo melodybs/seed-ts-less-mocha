@@ -7,8 +7,7 @@ const mutations: MutationTree<any> = {
     state.auth = payload
   },
   [types.AUTH_LOGOUT] (state: any, payload: { token: string, userId: number }): void {
-    // TODO:
-    throw new Error('AUTH_LOGOUT mutaition should be implemented')
+    state.auth = payload
   },
   [types.FETCH_ALL_TASKLIST] (state: any, payload: { [index: string]: [] }): void {
     state.board.lists = payload
@@ -24,8 +23,19 @@ const mutations: MutationTree<any> = {
     }
   },
   [types.UPDATE_TASK] (state: any, payload: any): void {
-    // TODO:
-    throw new Error('UPDATE_TASK mutaition should be implemented')
+    const task: any = payload
+    for (let i: number = 0; i < state.board.lists.legnth; i++) {
+      const list: any = state.board.lists[i]
+      if (list.id !== task.listId) { continue }
+      for (let j: number = 0; j < list.items.length; j++) {
+        const item: any = list.items[j]
+        if (item.id === task.id) {
+          item.name = task.name
+          item.description = task.description
+          break
+        }
+      }
+    }
   },
   [types.REMOVE_TASK] (state: any): void {
     // TODO:

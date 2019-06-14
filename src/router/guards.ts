@@ -11,6 +11,8 @@ export const authorizeToken: NavigationGuard = (to: Route, from: Route, next: Ca
     } else {
       next()
     }
+  } else if (to.path === '/login' && store.state.auth.token) {
+    next({ path: '/' })
   } else {
     next()
   }

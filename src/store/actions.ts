@@ -34,9 +34,12 @@ const actions: ActionTree<any, any> = {
       })
       .catch((err: Error): void => { throw err })
   },
-  updateTask: ({ commit }: ActionContext<any, any>): void => {
-    // TODO:
-    throw new Error('updateTask action should be implemented')
+  updateTask: ({ commit, state }: ActionContext<any, any>, task: any): Promise<void> => {
+    return Task.update(state.auth.token, task)
+      .then((): void => {
+        commit(types.UPDATE_TASK, task)
+      })
+      .catch((err: Error) => { throw err })
   },
   removeTask: ({ commit, state }: ActionContext<any, any>, { id, listId }: any): Promise<void> => {
     return Task.remove(state.auth.token, { id, listId })

@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import KbnBoardNavigation from '@/components/molecules/KbnBoardNavigation.vue'
-import KbnBoardTask from '@/components/molecules/KbnBoardTask.vue'
+import KbnBoardTask from '@/components/organisms/KbnBoardTask.vue'
 import { mapState } from 'vuex'
 
 @Component({
@@ -33,7 +33,7 @@ import { mapState } from 'vuex'
   }
 })
 export default class KbnBoardView extends Vue {
-  public progress: boolean
+  public progress: boolean = false
   public message: string = ''
 
   created () {
