@@ -5,7 +5,7 @@
         <header class="header">
           <KbnButton
             type="text"
-            @click="handleCLose"
+            @click="handleClose"
           >
             <KbnIcon name="close" />
           </KbnButton>
@@ -13,7 +13,7 @@
         <section class="body">
           <KbnTaskDetailForm
             :task="task"
-            :onupdate="handleClose"
+            :onupdate="handleUpdate"
           />
         </section>
       </div>

@@ -1,5 +1,6 @@
 <template>
   <section class="board-view">
+    <KbnBoardNavigation @logout="handleLogout" />
     <p
       v-if="progress"
       class="progress"

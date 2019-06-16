@@ -44,7 +44,7 @@ const actions: ActionTree<any, any> = {
   removeTask: ({ commit, state }: ActionContext<any, any>, { id, listId }: any): Promise<void> => {
     return Task.remove(state.auth.token, { id, listId })
       .then((): void => {
-        commit(types.MOVE_TASK_DONE, { id, listId })
+        commit(types.REMOVE_TASK, { id, listId })
       })
       .catch((err: Error): void => { throw err })
   },
@@ -56,13 +56,13 @@ const actions: ActionTree<any, any> = {
     commit(types.MOVE_TO_TASK, { target: id, to: listId })
     return Promise.resolve()
   },
-  performTaskMoving: ({ commit, state }: any): any => {
-    const { target, from, to } = state.draggin
+  performTaskMoving: ({ commit, state }: any) => {
+    const { target, from, to }: any = state.dragging
     return Task.move(state.auth.token, { id: target, from, to })
-      .then((): void => {
+      .then(() => {
         commit(types.MOVE_TASK_DONE, { target, from, to })
       })
-      .catch((err: Error): void => { throw err })
+      .catch(err => { throw err })
   }
 }
 

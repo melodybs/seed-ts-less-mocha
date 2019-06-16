@@ -140,4 +140,10 @@ form {
 label {
   display: block;
 }
+input, textarea {
+  width: 99%;
+}
+.form-actions {
+  text-align: right
+}
 </style>

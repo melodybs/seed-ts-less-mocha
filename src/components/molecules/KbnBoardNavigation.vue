@@ -6,7 +6,7 @@
     <div class="actions">
       <KbnButton
         type="text"
-        @clic="$emit('logout')"
+        @click="$emit('logout')"
       >
         로그아웃
       </KbnButton>

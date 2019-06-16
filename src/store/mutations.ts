@@ -1,4 +1,4 @@
-import { MutationTree, MutationPayload } from 'vuex'
+import { MutationTree } from 'vuex'
 import * as types from './mutation-types'
 
 const mutations: MutationTree<any> = {
@@ -22,9 +22,9 @@ const mutations: MutationTree<any> = {
       }
     }
   },
-  [types.UPDATE_TASK] (state: any, payload: any): void {
+  [types.UPDATE_TASK] (state: any, payload: any) {
     const task: any = payload
-    for (let i: number = 0; i < state.board.lists.legnth; i++) {
+    for (let i: number = 0; i < state.board.lists.length; i++) {
       const list: any = state.board.lists[i]
       if (list.id !== task.listId) { continue }
       for (let j: number = 0; j < list.items.length; j++) {
@@ -37,13 +37,17 @@ const mutations: MutationTree<any> = {
       }
     }
   },
-  [types.REMOVE_TASK] (state: any): void {
-    // TODO:
-    throw new Error('REMOVE_TASK mutaition should be implemented')
+  [types.REMOVE_TASK] (state: any, payload: any): void {
+    const { id, listId }: {id: number, listId: number } = payload
+    for (let i: number = 0; i < state.board.lists.length; i++) {
+      const list = state.board.lists[i]
+      if (list.id !== listId) { continue }
+      list.items = list.items.filter((item: any) => item.id !== id)
+    }
   },
   [types.MOVE_TASK_FROM] (state: any, payload: any) : void {
     const { target, from }: any = payload
-    state.dragging.target = payload
+    state.dragging.target = target
     state.dragging.from = from
   },
   [types.MOVE_TO_TASK] (state: any, payload: any) {
@@ -64,9 +68,9 @@ const mutations: MutationTree<any> = {
 
     // 원래 속했던 태스크 목록에서 해당 태스크를 꺼냄
     const fromTaskList: any = getTaskList(state.board.lists, from)
-    const index: any = fromTaskList.items.findIndex((item: any):boolean => item.id === target)
+    const index: any = fromTaskList.items.findIndex((item: any):any => item.id === target)
     const task: any = fromTaskList.items[index]
-    fromTaskList.items.spliice(index, 1)
+    fromTaskList.items.splice(index, 1)
 
     // 태스크 목록 ID를 이동 대상으로 변경
     task.listId = to

@@ -56,7 +56,7 @@ ul {
   padding: 0;
 }
 ul li {
-  width: 192px;
+  width: 33%;
   margin-right: 8px;
   border: thin solid black;
   border-radius: 0.5em;

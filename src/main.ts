@@ -1,5 +1,5 @@
 import Vue, { CreateElement, VNode } from 'vue'
-import './plugins/vuetify'
+// import './plugins/vuetify'
 import 'es6-promise' // 프라미스 폴리필
 import App from './App.vue'
 import ErrorBoundary from './ErrorBoundary.vue'

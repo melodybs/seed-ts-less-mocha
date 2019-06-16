@@ -1,5 +1,8 @@
 import Vue from 'vue'
 
+// require('jsdom-global')()
+// global.expect = require('expect')
+
 Vue.config.productionTip = false
 
 // require all test files (files that ends with .spec.js)

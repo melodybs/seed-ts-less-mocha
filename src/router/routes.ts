@@ -18,7 +18,7 @@ export default [
     path: '/login',
     component: KbnLoginView
   },
- /*  {
+  /* {
     path: '/tasks/:id',
     component: KbnTaskDetailModal,
     meta: { requiresAuth: true }

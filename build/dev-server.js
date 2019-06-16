@@ -80,6 +80,7 @@ module.exports = app => {
   function addTask (board, name, listId) {
     let task = null
     for (let i = 0; i < board.lists.length; i++) {
+      const list = board.lists[i]
       if (list.id === listId) {
         task = {
           id: generateTaskId(),
@@ -95,7 +96,7 @@ module.exports = app => {
   }
 
   // 태스크 추가 API 엔드포인트 '/tasks/add'
-  app.post('/task/add', (req, res) => {
+  app.post('/tasks/add', (req, res) => {
     const token = req.headers['x-kbn-token']
     if (!token) {
       return res.status(403).json({ message: '허가되지 않았습니다' })
@@ -155,7 +156,56 @@ module.exports = app => {
   // 태스크 삭제 헬퍼 함수
   function removeTask (board, id) {
     board.lists.forEach(list => {
-      list.items = list.item.filter(item => item.id !== id)
+      list.items = list.items.filter(item => item.id !== id)
     })
   }
+
+  // 태스크 삭제 API 엔트포인트 'task/:id/remove'
+  app.delete('/tasks/:id/remove', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      res.status(403).json({ message: '허가되지 않았습니다' })
+    }
+    const id = parseInt(req.params.id)
+    removeTask(board, id)
+    res.sendStatus(204)
+  })
+
+  // 태스크 이동 API 엔드포인트 '/task/:id/move'
+  app.post('/tasks/:id/move', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      return res.status(403).json({ message: '허가되지 않았습니다' })
+    }
+
+    const target = parseInt(req.params.id)
+    const from = parseInt(req.body.from)
+    const to = parseInt(req.body.to)
+
+    const fromTaskList = getTaskList(board, from)
+    const index = fromTaskList.items.findIndex(item => item.id === target)
+    const task = fromTaskList.items[index]
+    fromTaskList.items.splice(index, 1)
+
+    task.listId = to
+
+    const toTaskList = getTaskList(board, to)
+    toTaskList.items.push(task)
+
+    res.sendStatus(200)
+  })
+
+  function getTaskList (board, id) {
+    return board.lists.find(list => list.id === id)
+  }
+
+  // 로그아웃 API 엔드포인트 '/auth/logout'
+  app.delete('/auth/logout', (req, res) => {
+    const token = req.headers['x-kbn-token']
+    if (!token) {
+      return res.status(403).json({ message: '허가되지 않았습니다' })
+    }
+    // NODE: 목업이므로 토큰 검증 등은 구현되지 않았음
+    res.sendStatus(204)
+  })
 }
