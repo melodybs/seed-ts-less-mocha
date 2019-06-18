@@ -2,6 +2,8 @@ import Vue from 'vue'
 
 // require('jsdom-global')()
 // global.expect = require('expect')
+// global.chai = require('chai')
+// global.expect = chai.expect
 
 Vue.config.productionTip = false
 

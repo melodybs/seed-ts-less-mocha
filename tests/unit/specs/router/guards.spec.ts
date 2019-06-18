@@ -96,7 +96,12 @@ describe('beforeEach 가드 훅', (): void => {
 
   describe('인증 토큰 없음', (): void => {
     it('/login 으로 리다이렉트', () => {
-      const app = setup({})
+      const app: any = setup({
+        auth: {
+          token: null,
+          userId: null
+        }
+      })
       expect(app.text()).to.equal('login')
     })
   })
