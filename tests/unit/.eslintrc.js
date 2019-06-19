@@ -8,6 +8,7 @@ module.exports = {
     chai: true
   },
   rules: {
-    'import/no-webpack-loader-syntax': 'off'
+    'import/no-webpack-loader-syntax': 'off',
+    'no-unused-expressions': 'off'
   }
 }
