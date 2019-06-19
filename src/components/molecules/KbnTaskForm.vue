@@ -78,6 +78,7 @@ export default class KbnTaskForm extends Vue {
       })
       .then((): void => {
         this.progress = false
+        this.name = ''
       })
   }
   handleCancel (): void {

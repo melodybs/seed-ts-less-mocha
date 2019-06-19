@@ -1,8 +1,6 @@
 module.exports = {
   env: {
-    node: true,
-    mocha: true,
-    jest: true
+    mocha: true
   },
   globals: {
     expect: true,

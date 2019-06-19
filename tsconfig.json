@@ -17,8 +17,7 @@
       "chai",
       "node",
       "vuetify",
-      "vuedraggable",
-      "expect"
+      "vuedraggable"
     ],
     "typeRoots": [
       "@types",

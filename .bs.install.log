@@ -43,4 +43,6 @@
 # 2019.06.10 : Storybook Typescript 로더를 위한 설치 : [
   npm install --save-dev fork-ts-checker-webpack-plugin
 ]
-
+# 2019.06.19 : 비동기 테스트 flush-promises : [ 
+  npm install --save-dev flush-promises 
+]
