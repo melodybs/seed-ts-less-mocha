@@ -5,6 +5,14 @@ import App from './App.vue'
 import ErrorBoundary from './ErrorBoundary.vue'
 import router from './router'
 import store from './store' // Vuex 스토어 인스턴스 임포트
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
+
+// Sentry
+Sentry.init({
+  dsn: 'https://470df340ba9e4d94b51d733391c10bf5@sentry.io/1486363',
+  integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+})
 
 /* Vue 전역 설정 */
 // & https://kr.vuejs.org/v2/api/#silent
