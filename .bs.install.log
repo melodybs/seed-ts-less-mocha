@@ -46,3 +46,7 @@
 # 2019.06.19 : 비동기 테스트 flush-promises : [ 
   npm install --save-dev flush-promises 
 ]
+# 2019.06.20 : 오류 추적 Sentry 설치 : [
+  npm install @sentry/browser,
+  npm install @sentry/integrations
+]

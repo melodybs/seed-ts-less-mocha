@@ -13,9 +13,9 @@ describe('로그인', () => {
       .type('12345678')
       .should('have.value', '12345678')
 
-    // 로그인 버튼 클릭. 보드페이지로 리다이렉트 확인. 보드페이지 p 문자열 확인
+    // 로그인 버튼 클릭. 보드페이지로 리다이렉트 확인. 보드페이지 .title h1 문자열 확인
     cy.contains('button', '로그인').click()
     cy.url().should('eq', 'http://localhost:8080/#/')
-    cy.contains('#app p', '보드페이지')
+    cy.contains('.title h1', 'Kanban App')
   })
 })
