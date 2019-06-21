@@ -5,6 +5,7 @@ import sinonChai from 'sinon-chai'
 import Vuex from 'vuex'
 import KbnLoginView from '@/components/templates/KbnLoginView.vue'
 import { CreateElement, VNode } from 'vue'
+import flushPromises from 'flush-promises'
 
 // chai.use(sinonChai)
 
@@ -24,6 +25,7 @@ describe('KbnLoginView', () => {
   const triggerLogin = (loginView: any, target: any) => {
     const loginForm = loginView.find(target)
     loginForm.vm.onlogin('foo@domain.com', '12345678')
+    console.log(456, actions.login.called)
   }
 
   beforeEach(() => {
@@ -64,10 +66,10 @@ describe('KbnLoginView', () => {
         // 프로미스 리프레시
         loginView.vm.$nextTick(() => {
           console.log('00000000', $router.push.called, $router.push.args)
-          /* expect($router.push.called).to.equal(true)
+          expect($router.push.called).to.equal(true)
           console.log(11111111, $router.push.called)
           expect($router.push.args[0][0].path).to.equal('/')
-          console.log(22222222, $router.push.args[0][0].path) */
+          console.log(22222222, $router.push.args[0][0].path)
           done()
         })
       })
@@ -87,7 +89,7 @@ describe('KbnLoginView', () => {
         loginView.vm.throwReject.restore() // spy 래핑 해제
       })
 
-      it('오류 처리가 호출됨', (done: any): void => {
+      it('오류 처리가 호출됨', async (): Promise<void> => {
         // login 액션이 실패함
         const message = 'login failed'
         actions.login.rejects(new Error(message))
@@ -95,13 +97,10 @@ describe('KbnLoginView', () => {
         triggerLogin(loginView, LoginFormComponentStub)
 
         // 프라미스로 리프레시
-        loginView.vm.$nextTick(() => {
-          const callInfo = loginView.vm.throwReject
-          console.log('11111111', callInfo.called, callInfo.args)
-          // expect(callInfo.called).to.equal(true)
-          // expect(callInfo.args[0][0].message).to.equal(message)
-          done()
-        })
+        await flushPromises()
+        const callInfo = loginView.vm.throwReject
+        expect(callInfo.called).to.equal(true)
+        expect(callInfo.args[0][0].message).to.equal(message)
       })
     })
   })

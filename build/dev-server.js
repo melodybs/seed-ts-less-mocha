@@ -46,9 +46,9 @@ module.exports = app => {
 
   const board = {
     lists: [
-      createTaskList('TODO', 2),
-      createTaskList('WIP', 1),
-      createTaskList('DONE', 1)
+      createTaskList('TODO', 8),
+      createTaskList('WIP', 4),
+      createTaskList('DONE', 22)
     ]
   }
 
@@ -118,7 +118,9 @@ module.exports = app => {
     let ret = false
     for (let i = 0; i < board.lists.length; i++) {
       const list = board.lists[i]
-      if (list.id !== listId) { continue }
+      if (list.id !== listId) {
+        continue
+      }
       for (let j = 0; j < list.items.length; j++) {
         const item = list.items[j]
         if (item.id === id) {

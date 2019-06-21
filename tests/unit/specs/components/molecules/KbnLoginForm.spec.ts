@@ -137,7 +137,7 @@ describe('KbnLoginForm', () => {
       })
     })
 
-    /* // 'onlogin' 이벤트 테스트
+    // 'onlogin' 이벤트 테스트
     describe('onlogin', () => {
       let loginForm: any
       let onloginStub: any
@@ -172,8 +172,10 @@ describe('KbnLoginForm', () => {
             expect(authInfo.password).to.equal(loginForm.vm.password)
             loginForm.vm.$nextTick(() => { // resolve 에서 상태 반영
               expect(loginForm.vm.error).to.equal('') // 오류 메시지는 초기화된 그대로
-              expect(loginForm.vm.disableLoginAction).to.equal(false) // 로그인 액션 가능
-              done()
+              loginForm.vm.$nextTick(() => {
+                expect(loginForm.vm.disableLoginAction).to.equal(false) // 로그인 액션 가능
+                done()
+              })
             })
           })
         })
@@ -198,11 +200,14 @@ describe('KbnLoginForm', () => {
             expect(authInfo.password).to.equal(loginForm.vm.password)
             loginForm.vm.$nextTick(() => {
               expect(loginForm.vm.error).to.equal('login error!') // 오류 메시지가 설정됨
-              expect(loginForm.vm.disableLoginAction).to.equal(false) // 로그인 액션 가능
+              loginForm.vm.$nextTick(() => {
+                expect(loginForm.vm.disableLoginAction).to.equal(false) // 로그인 액션 가능
+                done()
+              })
             })
           })
         })
       })
-    }) */
+    })
   })
 })
