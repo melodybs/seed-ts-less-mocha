@@ -25,7 +25,6 @@ describe('KbnLoginView', () => {
   const triggerLogin = (loginView: any, target: any) => {
     const loginForm = loginView.find(target)
     loginForm.vm.onlogin('foo@domain.com', '12345678')
-    console.log(456, actions.login.called)
   }
 
   beforeEach(() => {
@@ -57,21 +56,16 @@ describe('KbnLoginView', () => {
         })
       })
 
-      it('보드 페이지 루트로 리다이렉트', (done: any): void => {
+      it('보드 페이지 루트로 리다이렉트', async (): Promise<void> => {
         // login 액션을 성공함
         actions.login.resolves()
 
         triggerLogin(loginView, LoginFormComponentStub)
 
         // 프로미스 리프레시
-        loginView.vm.$nextTick(() => {
-          console.log('00000000', $router.push.called, $router.push.args)
-          expect($router.push.called).to.equal(true)
-          console.log(11111111, $router.push.called)
-          expect($router.push.args[0][0].path).to.equal('/')
-          console.log(22222222, $router.push.args[0][0].path)
-          done()
-        })
+        await flushPromises()
+        expect($router.push.called).to.equal(true)
+        expect($router.push.args[0][0].path).to.equal('/')
       })
     })
 

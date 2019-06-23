@@ -11,7 +11,7 @@ import * as Integrations from '@sentry/integrations'
 // Sentry
 Sentry.init({
   dsn: 'https://470df340ba9e4d94b51d733391c10bf5@sentry.io/1486363',
-  integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+  integrations: [new Integrations.Vue({ Vue, attachProps: true })]
 })
 
 /* Vue 전역 설정 */

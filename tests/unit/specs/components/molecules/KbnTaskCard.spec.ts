@@ -21,7 +21,6 @@ describe('KbnTaskCard', () => {
 
   describe('태스크카드 id, name 확인', () => {
     it('id, name, description, listId', () => {
-      console.log(taskCard.html())
       expect(taskCard.find('.name a').attributes('href')).to.equal('#/task/20')
       expect(taskCard.find('.name h3').text()).to.equal('task name')
     })
