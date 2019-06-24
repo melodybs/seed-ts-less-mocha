@@ -13,7 +13,7 @@ describe('KbnTaskForm', () => {
   let taskForm: any
   let actions: any
   let store: any
-  let KbnButtonComponentStub: any
+  // let KbnButtonComponentStub: any
 
   beforeEach((done: any): void => {
     actions = { addTask: sinon.stub() }

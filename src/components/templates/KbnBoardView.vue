@@ -49,11 +49,14 @@ export default class KbnBoardView extends Vue {
     this.progress = false
     this.message = ''
   }
+  private throwReject (err: Error): Promise<Error> {
+    return Promise.reject(err)
+  }
   public loadLists (): void {
     this.setProgress('로딩 중...')
 
     this.$store.dispatch('fetchLists')
-      .catch((err: Error): Promise<never> => Promise.reject(err))
+      .catch((err: Error): Promise<Error> => this.throwReject(err))
       .then(():void => {
         this.resetProgress()
       })
@@ -65,7 +68,7 @@ export default class KbnBoardView extends Vue {
       .then((): void => {
         this.$router.push({ path: '/login' })
       })
-      .catch((err: Error): Promise<never> => Promise.reject(err))
+      .catch((err: Error): Promise<Error> => this.throwReject(err))
       .then((): void => {
         this.resetProgress()
       })
