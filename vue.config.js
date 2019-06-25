@@ -4,7 +4,7 @@ module.exports = {
   // configureWebpack: {
   devServer: {
     before: backend
-  }
+  },
   // }
   /* API 프락시 (https://cli.vuejs.org/config/#devserver-proxy)
   # 개발 중에는 운영용 서버를 사용할수 없거나, API가 확정되지 않아 실제 서버 사용이 어려움
@@ -28,4 +28,20 @@ module.exports = {
     }
   }
   */
+  pluginOptions: {
+    i18n: {
+      locale: 'ko', // The locale of project localization
+      fallbackLocale: 'en', // The fallback locale of project localization
+      localeDir: 'locales', // The directory where store localization messages of project
+      enableInSFC: true // Enable locale messages in Single file components
+    }
+  },
+  chainWebpack: config => {
+    config.module
+      .rule('i18n')
+      .resourceQuery(/blockType=i18n/)
+      .type('javascript/auto')
+      .use('i18n')
+      .loader('@kazupon/vue-i18n-loader')
+  }
 }

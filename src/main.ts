@@ -1,12 +1,13 @@
 import Vue, { CreateElement, VNode } from 'vue'
 // import './plugins/vuetify'
-import 'es6-promise' // 프라미스 폴리필
+import 'es6-promise' // 프로미스 폴리필
 import App from './App.vue'
 import ErrorBoundary from './ErrorBoundary.vue'
 import router from './router'
 import store from './store' // Vuex 스토어 인스턴스 임포트
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
+import i18n from './i18n'
 
 // Sentry
 Sentry.init({
@@ -28,7 +29,7 @@ Sentry.init({
 // & https://kr.vuejs.org/v2/api/#keyCodes
 // Vue.config.keyCodes
 // & https://kr.vuejs.org/v2/api/#productionTip
-Vue.config.productionTip = true // false
+Vue.config.productionTip = false // false
 // & https://kr.vuejs.org/v2/api/#performance
 Vue.config.performance = true // NODE_EVN == 'development'로 설정하여 프로파일링 활성화
 
@@ -73,5 +74,6 @@ new Vue({
   el: '#app',
   router,
   store, // 임포트한 스토어 인스턴스를 'store' 옵션으로 전달
+  i18n,
   render: (h: CreateElement): VNode => h(App)
 })

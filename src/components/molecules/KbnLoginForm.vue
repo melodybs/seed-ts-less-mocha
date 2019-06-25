@@ -2,28 +2,28 @@
   <form novalidate>
     <div class="form-item">
       <label for="email">
-        이메일 주소
+        {{ $t('M.KbnLoginForm.label.email') }}
       </label>
       <input
         id="email"
         v-model="email"
         type="text"
         autocomplete="off"
-        placeholder="예: kanban@domain.com"
+        placeholder="Ex: kanban@domain.com"
         @focus="resetError"
       >
       <ul class="validation-errors">
         <li v-if="!validation.email.format">
-          이메일 주소 형식에 어긋납니다
+          {{ $t('M.KbnLoginForm.validation.email.format') }}
         </li>
         <li v-if="!validation.email.required">
-          이메일 주소가 입력되지 않았습니다
+          {{ $t('M.KbnLoginForm.validation.email.required') }}
         </li>
       </ul>
     </div>
     <div class="form-item">
       <label for="password">
-        패스워드
+        {{ $t('M.KbnLoginForm.label.password') }}
       </label>
       <input
         id="password"
@@ -35,7 +35,7 @@
       >
       <ul class="validation-errors">
         <li v-if="!validation.password.required">
-          패스워드가 입력되지 않았습니다
+          {{ $t('M.KbnLoginForm.validation.password.required') }}
         </li>
       </ul>
     </div>
@@ -44,13 +44,13 @@
         :disabled="disableLoginAction"
         @click="handleClick"
       >
-        로그인
+        {{ $t('M.KbnLoginForm.button.login') }}
       </KbnButton>
       <p
         v-if="progress"
         class="login-progress"
       >
-        로그인 중...
+        {{ $t('M.KbnLoginForm.info.progress') }}
       </p>
       <p
         v-if="error"

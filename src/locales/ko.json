@@ -1,0 +1,46 @@
+{
+  "M": {
+    "KbnBoardNavigation": {
+      "button": {
+        "logout": "로그아웃"
+      }
+    },
+    "KbnLocaleButton": {
+      "ko": "한국어",
+      "en": "English"
+    },
+    "KbnLoginForm": {
+      "button": {
+        "login": "로그인"
+      },
+      "label":{
+        "email": "이메일 주소",
+        "password": "패스워드"
+      },
+      "validation": {
+        "email": {
+          "format": "이메일 주소 형식에 어긋납니다",
+          "required": "이메일 주소가 입력되지 않았습니다"
+        },
+        "password": {
+          "required": "패스워드가 입력되지 않았습니다"
+        }
+      },
+      "info": {
+        "progress": "로그인 중..."
+      }
+    },
+    "KbnTaskDetailForm": {
+      "button": {
+        "edit": "수정"
+      },
+      "label": {
+        "taskName": "태스크 이름",
+        "taskDesc": "태스크 설명"
+      },
+      "info": {
+        "editing": "수정 중..."
+      }
+    }
+  }
+}

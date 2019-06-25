@@ -1,0 +1,46 @@
+{
+  "M": {
+    "KbnBoardNavigation": {
+      "button": {
+        "logout": "Logout"
+      }
+    },
+    "KbnLocaleButton": {
+      "ko": "한국어",
+      "en": "English"
+    },
+    "KbnLoginForm": {
+      "button": {
+        "login": "Login"
+      },
+      "label":{
+        "email": "Email Adress",
+        "password": "Password"
+      },
+      "validation": {
+        "email": {
+          "format": "Email address format is not appropriate.",
+          "required": "No email address entered."
+        },
+        "password": {
+          "required": "No password entered."
+        }
+      },
+      "info": {
+        "progress": "Signing in ..."
+      }
+    },
+    "KbnTaskDetailForm": {
+      "button": {
+        "edit": "Edit"
+      },
+      "label": {
+        "taskName": "Task Name",
+        "taskDesc": "Task Description"
+      },
+      "info": {
+        "editing": "Editing..."
+      }
+    }
+  }
+}

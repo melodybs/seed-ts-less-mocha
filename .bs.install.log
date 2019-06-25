@@ -50,3 +50,7 @@
   npm install @sentry/browser,
   npm install @sentry/integrations
 ]
+# 2019.06.25 : sinon-stub-promise : [
+  npm install --save-dev sinon-stub-promise
+  npm install --save-dev @types/sinon-stub-promise
+]

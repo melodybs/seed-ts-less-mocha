@@ -1,5 +1,8 @@
 <template>
   <div class="login-view">
+    <nav class="locale-nav">
+      <KbnLocaleButton />
+    </nav>
     <h1>Kanban App</h1>
     <KbnLoginForm :onlogin="handleLogin" />
   </div>
@@ -8,10 +11,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import KbnLoginForm from '@/components/molecules/KbnLoginForm.vue'
+import KbnLocaleButton from '@/components/molecules/KbnLocaleButton.vue'
 
 @Component({
   name: 'KbnLoginView',
-  components: { KbnLoginForm }
+  components: { KbnLoginForm, KbnLocaleButton }
 })
 export default class KbnLoginView extends Vue {
   public throwReject (err: Error): Promise<Error> {
@@ -31,5 +35,11 @@ export default class KbnLoginView extends Vue {
 .login-view {
   width: 320px;
   margin: auto;
+}
+h1 {
+  margin: 0.5em
+}
+.locale-nav {
+  text-align: right
 }
 </style>
