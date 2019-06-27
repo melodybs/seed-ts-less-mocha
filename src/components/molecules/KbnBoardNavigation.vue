@@ -8,10 +8,10 @@
     </div>
     <div class="actions">
       <KbnButton
-        type="text"
         @click="$emit('logout')"
+        type="text"
       >
-        {{ $t('M.KbnBoardNavigation.button.logout') }}
+        {{ $t('C.M.KbnBoardNavigation.button.logout') }}
       </KbnButton>
     </div>
   </nav>

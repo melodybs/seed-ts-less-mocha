@@ -6,6 +6,7 @@ import Vuex from 'vuex'
 import KbnLoginView from '@/components/templates/KbnLoginView.vue'
 import { CreateElement, VNode } from 'vue'
 import flushPromises from 'flush-promises'
+import i18n from '@/i18n'
 
 // chai.use(sinonChai)
 
@@ -51,6 +52,7 @@ describe('KbnLoginView', () => {
         loginView = mount(KbnLoginView, {
           mocks: { $router },
           stubs: { 'kbn-login-form': LoginFormComponentStub },
+          i18n,
           store,
           localVue
         })
@@ -73,6 +75,7 @@ describe('KbnLoginView', () => {
       beforeEach(() => {
         loginView = mount(KbnLoginView, {
           stubs: { 'kbn-login-form': LoginFormComponentStub },
+          i18n,
           store,
           localVue
         })

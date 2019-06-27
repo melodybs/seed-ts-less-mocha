@@ -1,18 +1,18 @@
 <template>
   <nav>
     <KbnButton
+      @click="localeChange('ko')"
       class="locale-button"
       type="text"
-      @click="localeChange('ko')"
     >
-      {{ $t('M.KbnLocaleButton.ko') }}
+      {{ $t('C.M.KbnLocaleButton.ko') }}
     </KbnButton>
     <KbnButton
+      @click="localeChange('en')"
       class="locale-button"
       type="text"
-      @click="localeChange('en')"
     >
-      {{ $t('M.KbnLocaleButton.en') }}
+      {{ $t('C.M.KbnLocaleButton.en') }}
     </KbnButton>
   </nav>
 </template>

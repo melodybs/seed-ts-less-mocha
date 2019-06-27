@@ -5,6 +5,7 @@ import { mount, createLocalVue, shallowMount } from '@vue/test-utils'
 import Vuex from 'vuex'
 import sinon from 'sinon'
 import flushPromises from 'flush-promises'
+import i18n from '@/i18n'
 
 describe('KbnTaskForm', () => {
   const localVue = createLocalVue()
@@ -20,6 +21,7 @@ describe('KbnTaskForm', () => {
     store = new Vuex.Store({ state: {}, actions })
     taskForm = mount(KbnTaskForm, {
       propsData: { listId: 1 },
+      i18n,
       store,
       localVue
     })

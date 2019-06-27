@@ -77,3 +77,15 @@ new Vue({
   i18n,
   render: (h: CreateElement): VNode => h(App)
 })
+
+// & https://kazupon.github.io/vue-i18n/guide/hot-reload.html#hot-reloading
+// Hot reloading
+/* if (module.hot) {
+  module.hot.accept(['./locales/ko', './locales/en'], function () {
+    i18n.setLocaleMessage('ko', require('./locales/ko').default)
+    i18n.setLocaleMessage('en', require('./locales/en').default)
+    // Or the following hot updates via $i18n property
+    // app.$i18n.setLocaleMessage('en', require('./en').default)
+    // app.$i18n.setLocaleMessage('ja', require('./ja').default)
+  })
+} */

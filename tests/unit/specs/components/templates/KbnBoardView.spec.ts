@@ -6,6 +6,7 @@ import sinon from 'sinon'
 // import sinonStubPromise from 'sinon-stub-promise'
 import state from '@/store/state'
 import flushPromises from 'flush-promises'
+import i18n from '@/i18n'
 
 // sinonStubPromise(sinon)
 
@@ -27,6 +28,7 @@ describe('KbnBoardView', () => {
     store = new Vuex.Store({ state, actions })
     boardView = mount(KbnBoardView, {
       mocks: { $router },
+      i18n,
       localVue,
       store
     })

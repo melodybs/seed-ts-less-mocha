@@ -5,17 +5,17 @@
       class="error"
     >
       <p class="display">
-        예기치 못한 오류가 발생했습니다. 애플리케이션 개발자에게 다음 정보와 함께 문의하세요.
+        {{ $t('G.ErrorBoundary.display') }}
       </p>
       <hr>
       <p class="message">
-        오류 메시지: {{ error.message }}
+        {{ `$t('G.ErrorBoundary.message'): error.message` }}
       </p>
       <p class="info">
-        오류 정보: {{ info }}
+        {{ `$t('G.ErrorBoundary.info', 0): info` }}
       </p>
       <p>
-        오류 상세 정보: {{ error.stack }}
+        {{ `$t('G.ErrorBoundary.info', 1): error.stack` }}
       </p>
     </div>
     <template v-else>

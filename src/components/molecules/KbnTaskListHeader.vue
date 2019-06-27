@@ -5,8 +5,8 @@
     </div>
     <div class="actions">
       <KbnButton
-        type="text"
         @click="$emit('add')"
+        type="text"
       >
         <KbnIcon name="add" />
       </KbnButton>

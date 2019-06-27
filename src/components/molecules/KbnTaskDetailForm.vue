@@ -4,7 +4,7 @@
     novalidate
   >
     <div class="form-item">
-      <label for="task-name">{{ $t('M.KbnTaskDetailForm.label.taskName') }}</label>
+      <label for="task-name">{{ $t('C.M.KbnTaskDetailForm.label.taskName') }}</label>
       <input
         id="task-name"
         v-model="task.name"
@@ -12,7 +12,7 @@
       >
     </div>
     <div class="form-item">
-      <label for="task-description">{{ $t('M.KbnTaskDetailForm.label.taskDesc') }}</label>
+      <label for="task-description">{{ $t('C.M.KbnTaskDetailForm.label.taskDesc') }}</label>
       <textarea
         id="task-description"
         v-model="task.description"
@@ -23,13 +23,13 @@
         :disabled="progress"
         @click="handleClick"
       >
-        {{ $t('M.KbnTaskDetailForm.button.edit') }}
+        {{ $t('C.M.KbnTaskDetailForm.button.edit') }}
       </KbnButton>
       <p
         v-if="progress"
         class="update-progress"
       >
-        {{ $t('M.KbnTaskDetailForm.info.editing') }}
+        {{ $t('C.M.KbnTaskDetailForm.info.editing') }}
       </p>
       <p
         v-if="error"

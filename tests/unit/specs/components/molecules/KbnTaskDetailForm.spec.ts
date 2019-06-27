@@ -3,6 +3,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import { expect } from 'chai'
 import sinon from 'sinon'
 import Vuex from 'vuex'
+import i18n from '@/i18n'
 
 describe('KbnTaskDetailForm', (): void => {
   let onupdateStub: any
@@ -20,7 +21,8 @@ describe('KbnTaskDetailForm', (): void => {
           listId: 1
         },
         onupdate: onupdateStub
-      }
+      },
+      i18n
       // ,localVue
     })
     taskDetailForm.setData({

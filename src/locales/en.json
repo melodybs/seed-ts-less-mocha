@@ -1,46 +1,79 @@
 {
-  "M": {
-    "KbnBoardNavigation": {
-      "button": {
-        "logout": "Logout"
-      }
-    },
-    "KbnLocaleButton": {
-      "ko": "한국어",
-      "en": "English"
-    },
-    "KbnLoginForm": {
-      "button": {
-        "login": "Login"
-      },
-      "label":{
-        "email": "Email Adress",
-        "password": "Password"
-      },
-      "validation": {
-        "email": {
-          "format": "Email address format is not appropriate.",
-          "required": "No email address entered."
-        },
-        "password": {
-          "required": "No password entered."
-        }
-      },
-      "info": {
-        "progress": "Signing in ..."
-      }
-    },
-    "KbnTaskDetailForm": {
-      "button": {
-        "edit": "Edit"
-      },
-      "label": {
-        "taskName": "Task Name",
-        "taskDesc": "Task Description"
-      },
-      "info": {
-        "editing": "Editing..."
-      }
-    }
-  }
+	"C": {
+		"M": {
+			"KbnBoardNavigation": {
+				"button": {
+					"logout": "Logout"
+				}
+			},
+			"KbnLocaleButton": {
+				"en": "English",
+				"ko": "한국어"
+			},
+			"KbnLoginForm": {
+				"button": {
+					"login": "Login"
+				},
+				"info": {
+					"progress": "Signing in ..."
+				},
+				"label": {
+					"email": "Email Adress",
+					"password": "Password"
+				},
+				"validation": {
+					"email": {
+						"format": "Email address format is not appropriate.",
+						"required": "No email address entered."
+					},
+					"password": {
+						"required": "No password entered."
+					}
+				}
+			},
+			"KbnTaskDetailForm": {
+				"button": {
+					"edit": "Edit"
+				},
+				"info": {
+					"editing": "Editing..."
+				},
+				"label": {
+					"taskDesc": "Task Description",
+					"taskName": "Task Name"
+				}
+			},
+			"KbnTaskForm": {
+				"button": {
+					"add": "Add",
+					"cancel": "Cancel"
+				},
+				"info": {
+					"progress": "Adding "
+				},
+				"input": {
+					"name": {
+						"placeholder": "Task Name..."
+					}
+				}
+			}
+		},
+		"T": {
+			"KbnBoardView": {
+				"info": {
+					"progress": {
+						"loading": "Loading...",
+						"logout": "Signing out ..."
+					}
+				}
+			}
+		}
+	},
+	"G": {
+		"ErroBoundary": {
+			"display": "An unexpected error has occurred. Please contact the application developer with the following information.",
+			"info": "Error information: | Error details:",
+			"message": "Error details:"
+		}
+	}
 }

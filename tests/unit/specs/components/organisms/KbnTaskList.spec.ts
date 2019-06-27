@@ -5,6 +5,7 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import flushPromises from 'flush-promises'
 import prettyFormat from 'pretty-format'
+import i18n from '@/i18n'
 
 describe('KbnTaskList', () => {
   let taskList: any
@@ -30,6 +31,7 @@ describe('KbnTaskList', () => {
           { id: 2, name: 'name2', description: 'description2', listId: 2 }
         ]
       },
+      i18n,
       store,
       localVue
     })

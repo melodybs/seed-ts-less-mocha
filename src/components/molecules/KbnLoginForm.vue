@@ -2,40 +2,40 @@
   <form novalidate>
     <div class="form-item">
       <label for="email">
-        {{ $t('M.KbnLoginForm.label.email') }}
+        {{ $t('C.M.KbnLoginForm.label.email') }}
       </label>
       <input
         id="email"
         v-model="email"
+        @focus="resetError"
         type="text"
         autocomplete="off"
         placeholder="Ex: kanban@domain.com"
-        @focus="resetError"
       >
       <ul class="validation-errors">
         <li v-if="!validation.email.format">
-          {{ $t('M.KbnLoginForm.validation.email.format') }}
+          {{ $t('C.M.KbnLoginForm.validation.email.format') }}
         </li>
         <li v-if="!validation.email.required">
-          {{ $t('M.KbnLoginForm.validation.email.required') }}
+          {{ $t('C.M.KbnLoginForm.validation.email.required') }}
         </li>
       </ul>
     </div>
     <div class="form-item">
       <label for="password">
-        {{ $t('M.KbnLoginForm.label.password') }}
+        {{ $t('C.M.KbnLoginForm.label.password') }}
       </label>
       <input
         id="password"
         v-model="password"
+        @focus="resetError"
         type="password"
         autocomplete="off"
         placeholder="예: xxxxxxxxxx"
-        @focus="resetError"
       >
       <ul class="validation-errors">
         <li v-if="!validation.password.required">
-          {{ $t('M.KbnLoginForm.validation.password.required') }}
+          {{ $t('C.M.KbnLoginForm.validation.password.required') }}
         </li>
       </ul>
     </div>
@@ -44,13 +44,13 @@
         :disabled="disableLoginAction"
         @click="handleClick"
       >
-        {{ $t('M.KbnLoginForm.button.login') }}
+        {{ $t('C.M.KbnLoginForm.button.login') }}
       </KbnButton>
       <p
         v-if="progress"
         class="login-progress"
       >
-        {{ $t('M.KbnLoginForm.info.progress') }}
+        {{ $t('C.M.KbnLoginForm.info.progress') }}
       </p>
       <p
         v-if="error"

@@ -1,46 +1,79 @@
 {
-  "M": {
-    "KbnBoardNavigation": {
-      "button": {
-        "logout": "로그아웃"
-      }
-    },
-    "KbnLocaleButton": {
-      "ko": "한국어",
-      "en": "English"
-    },
-    "KbnLoginForm": {
-      "button": {
-        "login": "로그인"
-      },
-      "label":{
-        "email": "이메일 주소",
-        "password": "패스워드"
-      },
-      "validation": {
-        "email": {
-          "format": "이메일 주소 형식에 어긋납니다",
-          "required": "이메일 주소가 입력되지 않았습니다"
-        },
-        "password": {
-          "required": "패스워드가 입력되지 않았습니다"
-        }
-      },
-      "info": {
-        "progress": "로그인 중..."
-      }
-    },
-    "KbnTaskDetailForm": {
-      "button": {
-        "edit": "수정"
-      },
-      "label": {
-        "taskName": "태스크 이름",
-        "taskDesc": "태스크 설명"
-      },
-      "info": {
-        "editing": "수정 중..."
-      }
-    }
-  }
+	"C": {
+		"M": {
+			"KbnBoardNavigation": {
+				"button": {
+					"logout": "로그아웃"
+				}
+			},
+			"KbnLocaleButton": {
+				"en": "English",
+				"ko": "한국어"
+			},
+			"KbnLoginForm": {
+				"button": {
+					"login": "로그인"
+				},
+				"info": {
+					"progress": "로그인 중..."
+				},
+				"label": {
+					"email": "이메일 주소",
+					"password": "패스워드"
+				},
+				"validation": {
+					"email": {
+						"format": "이메일 주소 형식에 어긋납니다",
+						"required": "이메일 주소가 입력되지 않았습니다"
+					},
+					"password": {
+						"required": "패스워드가 입력되지 않았습니다"
+					}
+				}
+			},
+			"KbnTaskDetailForm": {
+				"button": {
+					"edit": "수정"
+				},
+				"info": {
+					"editing": "수정 중..."
+				},
+				"label": {
+					"taskDesc": "태스크 설명",
+					"taskName": "태스크 이름"
+				}
+			},
+			"KbnTaskForm": {
+				"button": {
+					"add": "추가",
+					"cancel": "취소"
+				},
+				"info": {
+					"progress": "추가 중..."
+				},
+				"input": {
+					"name": {
+						"placeholder": "태스크 이름..."
+					}
+				}
+			}
+		},
+		"T": {
+			"KbnBoardView": {
+				"info": {
+					"progress": {
+						"loading": "로딩 중...",
+						"logout": "로그아웃 중..."
+					}
+				}
+			}
+		}
+	},
+	"G": {
+		"ErroBoundary": {
+			"display": "예기치 못한 오류가 발생했습니다. 애플리케이션 개발자에게 다음 정보와 함께 문의하세요.",
+			"info": "오류 정보: | 오류 상세 정보:",
+			"message": "오류 상세 정보:"
+		}
+	}
 }

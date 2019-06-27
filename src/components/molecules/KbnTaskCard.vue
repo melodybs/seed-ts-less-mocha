@@ -7,8 +7,8 @@
     </div>
     <div class="actions">
       <KbnButton
-        type="text"
         @click="$emit('remove', { id, listId })"
+        type="text"
       >
         <KbnIcon name="remove" />
       </KbnButton>

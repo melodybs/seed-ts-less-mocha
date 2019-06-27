@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
 import sinon from 'sinon'
 import KbnLoginForm from '@/components/molecules/KbnLoginForm.vue'
+import i18n from '@/i18n'
 
 describe('KbnLoginForm', () => {
   describe('프로퍼티', () => {
@@ -10,7 +11,8 @@ describe('KbnLoginForm', () => {
       let loginForm: any
       beforeEach(done => {
         loginForm = mount(KbnLoginForm, {
-          propsData: { onlogin: () => {} }
+          propsData: { onlogin: () => {} },
+          i18n
         })
         loginForm.vm.$nextTick(done)
       })
@@ -72,7 +74,8 @@ describe('KbnLoginForm', () => {
       let loginForm: any
       beforeEach(done => {
         loginForm = mount(KbnLoginForm, {
-          propsData: { onlogin: () => {} }
+          propsData: { onlogin: () => {} },
+          i18n
         })
         loginForm.vm.$nextTick(done)
       })
@@ -102,7 +105,8 @@ describe('KbnLoginForm', () => {
       let loginForm: any
       beforeEach(done => {
         loginForm = mount(KbnLoginForm, {
-          propsData: { onlogin: () => {} }
+          propsData: { onlogin: () => {} },
+          i18n
         })
         loginForm.vm.$nextTick(done)
       })
@@ -144,7 +148,8 @@ describe('KbnLoginForm', () => {
       beforeEach(done => {
         onloginStub = sinon.stub()
         loginForm = mount(KbnLoginForm, {
-          propsData: { onlogin: onloginStub }
+          propsData: { onlogin: onloginStub },
+          i18n
         })
         loginForm.setData({
           email: 'foo@domain.com',

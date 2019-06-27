@@ -4,8 +4,8 @@
       <div class="container">
         <header class="header">
           <KbnButton
-            type="text"
             @click="handleClose"
+            type="text"
           >
             <KbnIcon name="close" />
           </KbnButton>

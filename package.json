@@ -75,6 +75,7 @@
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue-i18n": "^0.1.1",
     "expect": "^24.8.0",
     "flush-promises": "^1.0.2",
     "inject-loader": "^4.0.1",
@@ -105,7 +106,8 @@
     "extends": [
       "plugin:vue/recommended",
       "@vue/standard",
-      "@vue/typescript"
+      "@vue/typescript",
+      "plugin:vue-i18n/recommended"
     ],
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
@@ -128,7 +130,16 @@
       "vue/script-indent": "warning",
       "vue/space-infix-ops": "warning",
       "vue/space-unary-ops": "warning",
-      "vue/v-on-function-call": "warning"
+      "vue/v-on-function-call": "warning",
+      "vue-i18n/no-dynamic-keys": "error",
+      "vue-i18n/no-unused-keys": ["error", {
+        "extensions": [".js", ".vue", ".ts"]
+      }]
+    },
+    "settings": {
+      "vue-i18n": {
+        "localeDir": "./src/locales/*.json"
+      }
     }
   },
   "postcss": {

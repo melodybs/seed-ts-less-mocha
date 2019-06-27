@@ -6,8 +6,8 @@
     <div class="form-item">
       <input
         v-model="name"
+        :placeholder="$t('C.M.KbnTaskForm.input.name.placeholder')"
         type="text"
-        placeholder="태스크..."
       >
     </div>
     <div class="form-actions">
@@ -15,13 +15,13 @@
         :disabled="disableAddAction"
         @click="handleAdd"
       >
-        추가
+        {{ $t('C.M.KbnTaskForm.button.add') }}
       </KbnButton>
       <KbnButton
         :disabled="progress"
         @click="handleCancel"
       >
-        취소
+        {{ $t('C.M.KbnTaskForm.button.cancel') }}
       </KbnButton>
     </div>
     <div class="message">
@@ -29,7 +29,7 @@
         v-if="progress"
         class="add-progress"
       >
-        추가 중...
+        {{ $t('C.M.KbnTaskForm.info.progress') }}
       </p>
       <p
         v-if="error"

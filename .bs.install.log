@@ -54,3 +54,8 @@
   npm install --save-dev sinon-stub-promise
   npm install --save-dev @types/sinon-stub-promise
 ]
+# 2019.06.26 : vue-i18n : [
+  vue add i18n
+  npm i --save-dev @kazupon/vue-i18n-loader
+  npm install --save-dev eslint-plugin-vue-i18n
+]
