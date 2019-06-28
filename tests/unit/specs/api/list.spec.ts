@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import axios from 'axios'
+// import List from '@/api/list'
 
 // List API 모듈을 사용하는 HTTP 클라이언트 목업을 만듦
 const mockList: any = (adapter: any) => {
@@ -23,6 +24,17 @@ describe('List API 모듈', (): void => {
         items
       }
     ]
+
+    /* describe('TEST 성공', () => {
+      it('TEST 리스트 받아옴', () => {
+        const r = List.fetch(token)
+          .then(({ lists }: any): void => {
+            console.log(0, lists)
+          })
+          .catch((err: Error): void => { console.log(1, err) })
+        console.log(2, r)
+      })
+    }) */
 
     describe('성공', () => {
       it('리스트 받아옴', (done: any) => {

@@ -1,10 +1,9 @@
 import { expect } from 'chai'
-import { mount, createLocalVue, Wrapper } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter, { NavigationGuard } from 'vue-router'
 import Vuex, { Store } from 'vuex'
 import { CreateElement, VNode } from 'vue'
-import { Component, Vue } from 'vue-property-decorator'
-import State from '@/store/state'
+import { Vue } from 'vue-property-decorator'
 
 /* // App 컴포넌트
 @Component({ name: 'app' })
