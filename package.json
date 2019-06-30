@@ -132,9 +132,16 @@
       "vue/space-unary-ops": "warning",
       "vue/v-on-function-call": "warning",
       "vue-i18n/no-dynamic-keys": "error",
-      "vue-i18n/no-unused-keys": ["error", {
-        "extensions": [".js", ".vue", ".ts"]
-      }]
+      "vue-i18n/no-unused-keys": [
+        "error",
+        {
+          "extensions": [
+            ".js",
+            ".vue",
+            ".ts"
+          ]
+        }
+      ]
     },
     "settings": {
       "vue-i18n": {

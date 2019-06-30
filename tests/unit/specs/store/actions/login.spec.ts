@@ -1,7 +1,7 @@
-import sinon from 'sinon'
-import { expect } from 'chai'
 import Vue from 'vue'
 import * as types from '@/store/mutation-types'
+import { expect } from 'chai'
+import sinon from 'sinon'
 
 // login 액션 안에서 사용되는 의존성의 목업을 만듬
 const mockLoginAction: Function = (login: any): any => {
@@ -27,10 +27,9 @@ describe('login 액션', () => {
     const userId: number = 1
 
     beforeEach((done: any): void => {
-      const login: Function =
-        (_authInfo: any): Promise<{ token: string, userId: number }> => {
-          return Promise.resolve({ token, userId })
-        }
+      const login: Function = (_authInfo: any): Promise<{ token: string, userId: number }> => {
+        return Promise.resolve({ token, userId })
+      }
       const action: any = mockLoginAction(login)
       commit = sinon.spy()
 

@@ -15,7 +15,7 @@ const actions: ActionTree<any, any> = {
   logout: ({ commit, state }: ActionContext<any, any>): Promise<void> => {
     return Auth.logout(state.auth.token)
       .then((): void => {
-        localStorage.removeItem('token')
+        window.localStorage.removeItem('token')
         commit(types.AUTH_LOGOUT, { token: null, userId: null })
       })
       .catch((err: Error): void => { throw err })
