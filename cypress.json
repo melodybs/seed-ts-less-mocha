@@ -1,4 +1,7 @@
 {
+  "env": {
+    "baseUrl": "http://localhost:8080"
+  },
   "pluginsFile": "tests/e2e/plugins/index.js",
   "projectId": "uuojff"
 }
