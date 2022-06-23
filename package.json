@@ -79,7 +79,7 @@
     "expect": "^24.8.0",
     "flush-promises": "^1.0.2",
     "inject-loader": "^4.0.1",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "jsdom-global": "^3.0.2",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
